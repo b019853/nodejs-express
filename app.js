@@ -9,6 +9,7 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var hello = require('./routes/hello');
+//api
 var api = require('./routes/api');
 var app = express();
 
@@ -39,6 +40,14 @@ app.get('/shiou', hello.shiou);
 //REST
 app.get('/1/time', api.time);
 app.get('/1/info', api.info);
+
+//CRUD
+app.post('/1/user/:nickname', api.create);
+app.get('/1/user/:nickname', api.read);
+app.put('/1/user/:nickname', api.update);
+app.delete('/1/user/:nickname', api.delete);
+
+
 
 
 http.createServer(app).listen(app.get('port'), function(){

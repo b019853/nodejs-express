@@ -1,3 +1,6 @@
+
+
+//time
 exports.time = function(req, res){
   var obj = {
   	"now": new Date().toISOString()
@@ -6,7 +9,7 @@ exports.time = function(req, res){
 };
 
 
-
+//info
 var calledTime=0;
 exports.info = function(req, res){
 	calledTime+=1;
@@ -17,3 +20,54 @@ exports.info = function(req, res){
   };
   res.send(obj);
 };
+
+
+//CRUD ->GPPD
+
+var vcard=[];
+exports.create = function(req, res){
+
+	var person ={
+	nickname:"",
+	name:"",
+	tel:"",
+	
+	};
+
+	console.log(">>>>>>>>create");
+	person.nickname=req.params.name;
+	person.tel=req.query.tel;
+	person.name=req.query.name;
+	
+
+	vcard.push(person);
+	res.end();
+
+};
+
+exports.read = function(req, res){
+	console.log(">>>>>>>>read");
+	res.send(vcard);
+    res.end();
+};
+
+exports.update = function(req, res){
+	var nickname = req.params.name;
+	vcar.forEach(function(entry){
+		if (entry.nickname===nickname){
+			console.log("found");
+			entry.tel = req.query.tel;
+			entry.name=req.query.name;
+			
+		}
+	})
+
+
+};
+
+exports.delete = function(req, res){
+	console.log(">>>>>>>>delete");
+	res.end();
+
+};
+
