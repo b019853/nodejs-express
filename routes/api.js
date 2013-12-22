@@ -53,7 +53,7 @@ exports.read = function(req, res){
 
 exports.update = function(req, res){
 	var nickname = req.params.name;
-	vcar.forEach(function(entry){
+	vcard.forEach(function(entry){
 		if (entry.nickname===nickname){
 			console.log("found");
 			entry.tel = req.query.tel;
@@ -61,7 +61,7 @@ exports.update = function(req, res){
 			
 		}
 	})
-
+	 res.end();
 
 };
 
